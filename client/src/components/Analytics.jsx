@@ -5,18 +5,28 @@ import { IoStatsChart } from "react-icons/io5";
 import { BiGroup } from "react-icons/bi";
 import { FiActivity } from "react-icons/fi";
 import { cardStyles } from "./ReusableStyles";
-import { useSelector } from "react-redux";
-import { sumData } from "../utils/sumData";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllIncAction } from "../Redux/Slices/incomeSlices";
+import { calcProfit, calcTotalExpensesInThisMonth, sumData } from "../utils/usefulFunctions";
 
 
 
 export default function Analytics() {
   const incomeState = useSelector(state=>state?.income);
-  const {incomeList} = incomeState
-  const [totalIncome , setTotalIncome] = useState(0)
+  const expenseState = useSelector(state=>state?.expense);
+
+  const {incomeList} = incomeState;
+  const {expensesList} = expenseState;
+
+  const [totalIncome , setTotalIncome] = useState(0);
+  const [profit , setProfit] = useState(0);
+  const [spendThisMonth , setSpendThisMonth] = useState(0);
+
   useEffect(()=>{
     setTotalIncome(sumData(incomeList))
-  },[])
+    setProfit(calcProfit(sumData(incomeList),sumData(expensesList)))
+    setSpendThisMonth(calcTotalExpensesInThisMonth(expensesList));
+  },[incomeList,expensesList,spendThisMonth])
 
   return (
     <Section>
@@ -26,7 +36,7 @@ export default function Analytics() {
         </div>
         <div className="content">
           <h5>Spent this month</h5>
-          <h2>$682.5</h2>
+          <h2>{spendThisMonth}₪</h2>
         </div>
       </div>
       <div className="analytic">
@@ -35,7 +45,7 @@ export default function Analytics() {
         </div>
         <div className="content">
           <h5>Profit</h5>
-          <h2>$350.40</h2>
+          <h2>{profit}₪</h2>
         </div>
       </div>
       <div className="analytic">

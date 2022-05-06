@@ -32,7 +32,7 @@ const Expense = () => {
             amount : "",
         },
         onSubmit : (values)=>{
-            console.table(values);
+            
             dispatch(createExpAction(values));
         },
         validationSchema : FormValidation

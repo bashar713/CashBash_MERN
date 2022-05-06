@@ -18,7 +18,7 @@ export default function IncomeList() {
     //Get All Incomes
     const allIncome = useSelector(state=>state?.income)
     const {incomeList,userLoading} = allIncome;
-    console.log(incomeList);
+    // console.log(incomeList);
     const transactions = [
         {
         image: avatarImage,

@@ -18,7 +18,7 @@ export default function ExpensesList() {
     //Get All Expenses
     const allExpenses = useSelector(state=>state?.expense)
     const {expensesList,userLoading} = allExpenses;
-    console.log(expensesList);
+    // console.log(expensesList);
     const transactions = [
         {
         image: avatarImage,
