@@ -18,14 +18,23 @@ export default function Analytics() {
   const {incomeList} = incomeState;
   const {expensesList} = expenseState;
 
-  const [totalIncome , setTotalIncome] = useState(0);
+  const [totalIncome , setTotalIncome] = useState("Hello");
   const [profit , setProfit] = useState(0);
   const [spendThisMonth , setSpendThisMonth] = useState(0);
 
   useEffect(()=>{
-    setTotalIncome(sumData(incomeList))
-    setProfit(calcProfit(sumData(incomeList),sumData(expensesList)))
-    setSpendThisMonth(calcTotalExpensesInThisMonth(expensesList));
+    if (incomeState?.userLoading || expenseState?.userLoading) {
+      console.log("Loading...");
+      setTotalIncome("Loading...")
+      setProfit("Loading...");
+      setSpendThisMonth("Loading...");
+
+    }
+    else{
+      setTotalIncome(sumData(incomeList))
+      setProfit(calcProfit(sumData(incomeList),sumData(expensesList)))
+      setSpendThisMonth(calcTotalExpensesInThisMonth(expensesList));
+    }
   },[incomeList,expensesList,spendThisMonth])
 
   return (

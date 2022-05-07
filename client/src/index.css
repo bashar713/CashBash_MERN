@@ -10,6 +10,8 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  position: relative;
+
   /* background-color: black; */
 }
 
@@ -26,4 +28,18 @@ body {
   opacity: 1 !important;
   visibility: visible !important;
   right: 0 !important;
+}
+
+
+.up{
+  justify-content:center ;
+  background-color:rgba(255,255,255,0.5);
+  display: flex ;
+  align-items:center;
+  position:absolute;
+  width:100%;
+  top: 0%;
+  left: 0%;
+  height:100%;
+  z-index: 100;
 }

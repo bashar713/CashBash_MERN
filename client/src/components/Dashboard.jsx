@@ -7,8 +7,8 @@ import Navbar from "./Navbar";
 import Profile from "./Profile";
 import Transfers from "./Transfers";
 import scrollreveal from "scrollreveal";
-import ExpensesList from "./ExpensesList";
-import IncomeList from "./IncomeList";
+import ExpensesList from "./ExpensesList.jsx";
+import IncomeList from "./IncomeList.jsx";
 
 export default function Dashboard() {
   useEffect(() => {

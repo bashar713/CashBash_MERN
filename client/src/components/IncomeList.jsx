@@ -20,24 +20,9 @@ export default function IncomeList() {
     const {incomeList,userLoading} = allIncome;
     // console.log(incomeList);
     const transactions = [
-        {
+      {
         image: avatarImage,
-        name: "Gift From My Freind",
-        time: "Today, 16:36",
-        amount: "+$50",
-        },
-        {
-        image: avatarImage,
-        name: "Car Gas",
-        time: "Today, 08:49",
-        amount: "-$25",
-        },
-        {
-        image: avatarImage,
-        name: "Income",
-        time: "Yesterday, 14:36",
-        amount: "+$1500",
-        },
+      }
     ];
   return (
     <Section>
@@ -45,25 +30,50 @@ export default function IncomeList() {
         <h2>Your Income</h2>
       </div>
       <div className="transactions">
-      {incomeList?.length > 0 ? incomeList?.slice(0).reverse().map((incomeItem,key) => {
-        return (
-          <div className="transaction" key={key}>
-            <div className="transaction__title">
-              <div className="transaction__title__image">
-                <img src={transactions[0]?.image} alt="" />
-              </div>
-              <div className="transaction__title__details">
-                <h3>{incomeItem?.title}</h3>
-                <h5>{formatDate(incomeItem?.createdAt)}</h5>
-              </div>
-            </div>
-            <div className="transaction__amount">
-              <span>+{(incomeItem?.amount).toLocaleString()}₪</span>
-            </div>
-          </div>
-        );
-      }) : <h1>No Data Found.</h1>}
-
+      {
+          incomeList?.length > 0 ?
+          <>
+            {
+              incomeList?.length <= 5 ? incomeList?.slice(0).reverse().map((incomeItem,key) => {
+                return (
+                  <div className="transaction" key={key}>
+                    <div className="transaction__title">
+                      <div className="transaction__title__image">
+                        <img src={transactions[0]?.image} alt="" />
+                      </div>
+                      <div className="transaction__title__details">
+                        <h3>{incomeItem?.title}</h3>
+                        <h5>{formatDate(incomeItem?.createdAt)}</h5>
+                      </div>
+                    </div>
+                    <div className="transaction__amount">
+                    <span>-{(incomeItem?.amount).toLocaleString()}₪</span>
+                  </div>
+                  </div>
+                  );
+              }) 
+              :
+              incomeList?.slice(incomeList?.length/2-1 | 0,incomeList?.length).reverse().map((incomeItem,key) => {
+                return (
+                  <div className="transaction" key={key}>
+                  <div className="transaction__title">
+                  <div className="transaction__title__image">
+                  <img src={transactions[0]?.image} alt="" />
+                  </div>
+                  <div className="transaction__title__details">
+                  <h3>{incomeItem?.title}</h3>
+                  <h5>{formatDate(incomeItem?.createdAt)}</h5>
+                  </div>
+                  </div>
+                  <div className="transaction__amount">
+                  <span>-{(incomeItem?.amount).toLocaleString()}₪</span>
+                  </div>
+                  </div>
+                );
+              })  
+            }
+          </> :<h1>No Data Found.</h1>
+        } 
       </div>
       <a className="view" href="#">
         View all <HiArrowNarrowRight />
@@ -81,6 +91,24 @@ export default function IncomeList() {
 
 
 
+{/* {incomeList?.length > 0 ? incomeList?.slice(0).reverse().map((incomeItem,key) => {
+  return (
+    <div className="transaction" key={key}>
+      <div className="transaction__title">
+        <div className="transaction__title__image">
+          <img src={transactions[0]?.image} alt="" />
+        </div>
+        <div className="transaction__title__details">
+          <h3>{incomeItem?.title}</h3>
+          <h5>{formatDate(incomeItem?.createdAt)}</h5>
+        </div>
+      </div>
+      <div className="transaction__amount">
+        <span>+{(incomeItem?.amount).toLocaleString()}₪</span>
+      </div>
+    </div>
+  );
+}) : <h1>No Data Found.</h1>} */}
 
 
 
