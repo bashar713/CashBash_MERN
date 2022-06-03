@@ -1,27 +1,35 @@
 import React, { useEffect,useState } from "react";
-
 import styled from "styled-components";
-import { HiArrowNarrowRight } from "react-icons/hi";
+import { HiArrowNarrowRight ,HiTrash} from "react-icons/hi";
 import avatarImage from "../assets/profile.jpeg";
 import { cardStyles } from "./ReusableStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllExpAction } from "../Redux/Slices/expenseSlices";
+import { deleteExpAction,fetchAllExpAction } from "../Redux/Slices/expenseSlices";
 import { formatDate } from "../utils/dateFormat";
 
-import Popup from "./Popup.js";
+import Popup from "./Popup";
 
 
 
 export default function ExpensesList() {
-    const [isOpen,setIsOpen] = useState(false);
-    const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(fetchAllExpAction())
-    },[dispatch])
 
     //Get All Expenses
     const allExpenses = useSelector(state=>state?.expense)
-    const {expensesList,userLoading} = allExpenses;
+    const {expensesList,isDeleted} = allExpenses;
+
+    const [isOpen,setIsOpen] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+      setShowModal(prev => !prev);
+    };
+
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(fetchAllExpAction())
+    },[dispatch,isDeleted])
+
    
     const transactions = [
         {
@@ -35,6 +43,86 @@ export default function ExpensesList() {
       <div className="title">
         <h2>Your Expenses</h2>
       </div>
+      <div className="transactions">
+      {
+      expensesList?.length > 0 ?
+      <>
+        {
+        expensesList?.length <= 5 ? expensesList?.slice(0).reverse().map((expenseItem,key)=> {
+          return (
+          <div className="transaction" key={key}>
+            <div className="transaction__title">
+              <div className="transaction__title__image">
+                <img src={transactions[0]?.image} alt="" />
+              </div>
+              <div className="transaction__title__details">
+                <h3>{expenseItem?.title}</h3>
+                <h5>{formatDate(expenseItem?.createdAt)}</h5>
+              </div>
+            </div>
+            <div className="transaction__amount">
+              <span>-{(expenseItem?.amount).toLocaleString()}₪</span>
+            </div>
+
+            <button onClick={(e)=>{
+              dispatch(deleteExpAction(expenseItem?._id));
+            }
+            }><HiTrash/></button>
+          </div>
+          );
+          })
+          :
+          expensesList?.slice(expensesList?.length/2-1 | 0,expensesList?.length).reverse().map((expenseItem,key) => {
+          return (
+          <div className="transaction" key={key}>
+            <div className="transaction__title">
+              <div className="transaction__title__image">
+                <img src={transactions[0]?.image} alt="" />
+              </div>
+              <div className="transaction__title__details">
+                <h3>{expenseItem?.title}</h3>
+                <h5>{formatDate(expenseItem?.createdAt)}</h5>
+              </div>
+            </div>
+            <div className="transaction__amount">
+              <span>{(expenseItem?.amount).toLocaleString()}₪</span>
+            </div>
+            <button><HiTrash/></button>
+          </div>
+          );
+          })
+          }
+      </> :<h1>No Data Found.</h1>
+      }
+    </div>
+    {  
+      expensesList?.length > 0 ? 
+        ( <button onClick={openModal} className="view" href="#">
+            View all
+            <HiArrowNarrowRight />
+          </button>
+        )
+        :
+        ( <a className="display">
+            View all
+            <HiArrowNarrowRight />
+          </a>
+        )
+    }
+    
+    
+    </Section>
+    <Popup showModal={showModal} setShowModal={setShowModal}/> 
+
+    </>
+  );
+}
+
+
+
+
+/*
+
       <div className="transactions">
         {
           expensesList?.length > 0 ?
@@ -85,18 +173,39 @@ export default function ExpensesList() {
         View all <HiArrowNarrowRight />
       </a>
 
-    </Section>
-    <Popup trigger={true}>
-      <h3>My popup</h3>
-    </Popup>
-    </>
-  );
-}
 
 
 
 
-/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     expensesList?.length > 0 ?
       <>

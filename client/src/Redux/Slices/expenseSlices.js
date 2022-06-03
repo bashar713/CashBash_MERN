@@ -1,6 +1,13 @@
-import {createAsyncThunk,createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk,createSlice,createAction} from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../utils/baseURL";
+
+
+//Redirect action
+export const resetExpCreated = createAction("expense/created/reset");
+export const resetExpUpdated = createAction("expense/updated/reset");
+export const resetExpDeleted = createAction("expense/deleted/reset");
+
 
 //Create Action
 export const createExpAction = createAsyncThunk(
@@ -66,6 +73,40 @@ export const fetchAllExpAction = createAsyncThunk(
     }
 );
 
+
+export const deleteExpAction = createAsyncThunk(
+  "expense/delete",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.users;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try {
+      const { data } = await axios.delete(
+        `${baseUrl}/expense/${id}`,
+        config
+      );
+      //dispatch
+    //   dispatch(resetExpDeleted());
+      return data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
+
+
+
 //Slices
 const expenseSlices = createSlice({
     name : "expense",
@@ -103,6 +144,27 @@ const expenseSlices = createSlice({
             state.isCreated = false;
         },
         [fetchAllExpAction.rejected]: (state, action)=>{
+            state.userLoading = false;
+            state.userAppErr = action?.payload?.msg;
+            state.userServerErr = action?.error?.msg;
+        },
+
+
+        //Handle Delete Action Methods
+        [deleteExpAction.pending] : (state,action)=>{
+            state.userLoading = true;
+            state.userAppErr = undefined;
+            state.isDeleted = false;
+            state.userServerErr = undefined;
+        },
+        [deleteExpAction.fulfilled] : (state, action)=>{
+            state.userLoading = false;
+            state.isDeleted = true;
+            state.expenseDeleted = action?.payload;
+            state.userAppErr = undefined;
+            state.userServerErr = undefined;
+        },
+        [deleteExpAction.rejected]: (state, action)=>{
             state.userLoading = false;
             state.userAppErr = action?.payload?.msg;
             state.userServerErr = action?.error?.msg;

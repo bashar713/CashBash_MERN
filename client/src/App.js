@@ -1,10 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { BrowserRouter,Route,Routes } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 import Dashboard from "./components/Dashboard";
 
 
-
-import { BrowserRouter,Route,Routes } from "react-router-dom";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
@@ -14,6 +14,7 @@ import Income from "./Pages/Income";
 import Expense from "./Pages/Expense";
 
 export default function App() {
+
   return (
     <>
     <BrowserRouter>

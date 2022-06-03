@@ -38,7 +38,9 @@ export default function Analytics() {
   },[incomeList,expensesList,spendThisMonth])
 
   return (
+    
     <Section>
+
       <div className="analytic ">
         <div className="logo">
           <BsFillCalendar2WeekFill />
@@ -54,7 +56,10 @@ export default function Analytics() {
         </div>
         <div className="content">
           <h5>Profit</h5>
-          <h2>{profit}₪</h2>
+          {
+            profit ? parseInt(profit.replace(/,/g, '')) >= 0 ? <h2 className="plus">{profit}₪</h2> : <h2 className="minus">{profit}₪</h2> : null
+          }
+
         </div>
       </div>
       <div className="analytic">
@@ -107,6 +112,12 @@ const Section = styled.section`
       svg {
         font-size: 1.5rem;
       }
+    }
+    .minus{
+      color: red;
+    }
+    .plus{
+      color: green;
     }
   }
 

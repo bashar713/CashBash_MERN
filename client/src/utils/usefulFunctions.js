@@ -1,3 +1,5 @@
+import { logOutUserAction } from '../Redux/Slices/userSlices.js';
+
 export function sumData(data){
     let sum = 0 ;
     for (let i = 0; i < data?.length; i++) {
@@ -14,7 +16,7 @@ export function calcProfit(inc,exp){
 
 export function calcTotalExpensesInThisMonth(expensesList){
     const dateInNumbers = new Date().toISOString().split('T')[0].substring(0,7);
-    console.log(expensesList);
+   
     //console.log(expensesList[expensesList?.length/2-1 | 0]);
     const filteredArray = [];
     expensesList?.map(item=>{
@@ -29,7 +31,16 @@ export function calcTotalExpensesInThisMonth(expensesList){
     return sumData(x);
 }
 
+// export function checkAutoLogin(dispatch){
+//     const userdata = localStorage.getItem("userData");
+//     let token = ""
+//     if (!userdata) {
+//         dispatch(logOutUserAction())
+//         return;
+//     }
 
+// }
+//   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 /*
     if the length of our list(exp , inc) === 5 then print all the element

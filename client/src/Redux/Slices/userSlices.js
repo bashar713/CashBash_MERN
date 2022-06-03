@@ -20,7 +20,7 @@ export const loginUserAction = createAsyncThunk(
                 config
             );
             //Save user into localStorage 
-            localStorage.setItem("userData" , JSON.stringify(data));
+            window.localStorage.setItem("userData" , JSON.stringify(data));
             //Return the data 
             return data;
         } catch (error) {
@@ -66,7 +66,7 @@ export const logOutUserAction = createAsyncThunk(
     async (payload,{rejectWithValue,getState,dispatch})=>{
         try {
             
-            localStorage.removeItem('userData');
+            window.localStorage.removeItem('userData');
             
         } catch (error) {
             if(!error?.response){
@@ -78,8 +78,8 @@ export const logOutUserAction = createAsyncThunk(
 );
 
 //Get the user info from localStorage
-const getUserFromLocalStorage = localStorage.getItem("userData") ? 
-    JSON.parse(localStorage.getItem("userData")) : 
+const getUserFromLocalStorage = window.localStorage.getItem("userData") ? 
+    JSON.parse(window.localStorage.getItem("userData")) : 
     undefined;
 
 

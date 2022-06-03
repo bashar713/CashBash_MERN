@@ -9,9 +9,11 @@ import Transfers from "./Transfers";
 import scrollreveal from "scrollreveal";
 import ExpensesList from "./ExpensesList.jsx";
 import IncomeList from "./IncomeList.jsx";
+import axios from "axios";
 
 export default function Dashboard() {
   useEffect(() => {
+
     const sr = scrollreveal({
       origin: "bottom",
       distance: "80px",

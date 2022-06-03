@@ -1,0 +1,200 @@
+export const DUMMY_DATA = [
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Salary",
+        "description" : "Software Engineer",
+        "type" : "income",
+        "amount" : 18520,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Business",
+        "description" : "Amazon Fba",
+        "type" : "income",
+        "amount" : 85220,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Real Estate",
+        "description" : "Home Renting ",
+        "type" : "income",
+        "amount" : 4000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Salary",
+        "description" : "Of Oz",
+        "type" : "income",
+        "amount" : 8500,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Affilate Marketing",
+        "description" : "Amazon Affalite",
+        "type" : "income",
+        "amount" : 1000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Stocks",
+        "description" : "S&P500",
+        "type" : "income",
+        "amount" : 81520,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Restraunt",
+        "description" : "Shawrma",
+        "type" : "income",
+        "amount" : 12000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Computre Service",
+        "description" : "Computre Fixing ",
+        "type" : "income",
+        "amount" : 5400,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Part Time Job",
+        "description" : "Fixing Phones",
+        "type" : "income",
+        "amount" : 2500,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Salary",
+        "description" : "Software Engineer",
+        "type" : "income",
+        "amount" : 18520,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Business",
+        "description" : "Amazon Fba",
+        "type" : "income",
+        "amount" : 85220,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Real Estate",
+        "description" : "Home Renting ",
+        "type" : "income",
+        "amount" : 4000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2020-05-28T18:56:23.370Z",
+        "updatedAt" : "2020-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Salary",
+        "description" : "Of Oz",
+        "type" : "income",
+        "amount" : 8500,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Affilate Marketing",
+        "description" : "Amazon Affalite",
+        "type" : "income",
+        "amount" : 1000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Stocks",
+        "description" : "S&P500",
+        "type" : "income",
+        "amount" : 81520,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2021-05-28T18:56:23.370Z",
+        "updatedAt" : "2021-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Restraunt",
+        "description" : "Shawrma",
+        "type" : "income",
+        "amount" : 12000,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Computre Service",
+        "description" : "Computre Fixing ",
+        "type" : "income",
+        "amount" : 5400,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    },
+    {
+        "_id" : "62927057946409d408997c2c",
+        "title" : "Part Time Job",
+        "description" : "Fixing Phones",
+        "type" : "income",
+        "amount" : 2500,
+        "user" : "62433a22d6fff1c93b0fdfc1",
+        "createdAt" : "2022-05-28T18:56:23.370Z",
+        "updatedAt" : "2022-05-28T18:56:23.370Z",
+        "__v" : 0
+    }
+]

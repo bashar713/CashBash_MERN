@@ -1,7 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Home = () => {
+  // useEffect(() =>{
+  //   const user = window.localStorage.getItem("userData")
+  //   console.log(user);
+  // },[])
   return (
       <div className="flex justify-center items-center h-screen">
       <div className="container max-w-sm bg-white pt-4 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

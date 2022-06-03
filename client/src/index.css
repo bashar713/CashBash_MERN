@@ -24,11 +24,11 @@ body {
   background: #ffc107;
 }
 
-.show {
+/* .show {
   opacity: 1 !important;
   visibility: visible !important;
   right: 0 !important;
-}
+} */
 
 
 .up{
@@ -42,4 +42,8 @@ body {
   left: 0%;
   height:100%;
   z-index: 100;
+}
+
+.display {
+  display: none ;
 }

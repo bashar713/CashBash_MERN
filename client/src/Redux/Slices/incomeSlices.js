@@ -1,6 +1,12 @@
-import {createAsyncThunk,createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk,createSlice,createAction} from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../utils/baseURL";
+
+
+//Redirect action
+const resetIncCreated = createAction("income/created/reset");
+const resetIncomeUpdated = createAction("income/updated/reset");
+const resetIncomeDeleted = createAction("income/deleted/reset");
 
 //Create Action
 export const createIncAction = createAsyncThunk(
@@ -23,7 +29,8 @@ export const createIncAction = createAsyncThunk(
                 payload,
                 config
             );
-            
+            //dispatch
+            dispatch(resetIncCreated());
             return data;
         } catch (error) {
             if(!error?.response){
@@ -35,7 +42,7 @@ export const createIncAction = createAsyncThunk(
 );
 
 
-//Create Action
+//Fetch All Action
 export const fetchAllIncAction = createAsyncThunk(
     "income/fetchAll",
     async (payload,{rejectWithValue,getState,dispatch})=>{
@@ -65,6 +72,38 @@ export const fetchAllIncAction = createAsyncThunk(
         }
     }
 );
+
+
+export const deleteIncAction = createAsyncThunk(
+  "income/delete",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    //get user token
+    const user = getState()?.users;
+    const { userAuth } = user;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+      },
+    };
+    //http call
+    try {
+      const { data } = await axios.delete(
+        `${baseUrl}/income/${id}`,
+        config
+      );
+      //dispatch
+      dispatch(resetIncomeDeleted());
+      return data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+
 
 //Slices
 const incomeSlices = createSlice({
@@ -104,6 +143,27 @@ const incomeSlices = createSlice({
         },
         [fetchAllIncAction.rejected]: (state, action)=>{
             state.userLoading = false;
+            state.userAppErr = action?.payload?.msg;
+            state.userServerErr = action?.error?.msg;
+        },
+
+        //Handle Delete Action Methods
+        [deleteIncAction.pending] : (state,action)=>{
+            state.userLoading = true;
+            state.userAppErr = undefined;
+            state.isDeleted = false;
+            state.userServerErr = undefined;
+        },
+        [deleteIncAction.fulfilled] : (state, action)=>{
+            state.userLoading = false;
+            state.isDeleted = true;
+            state.incomeDeleted = action?.payload;
+            state.userAppErr = undefined;
+            state.userServerErr = undefined;
+        },
+        [deleteIncAction.rejected]: (state, action)=>{
+            state.userLoading = false;
+            
             state.userAppErr = action?.payload?.msg;
             state.userServerErr = action?.error?.msg;
         },
